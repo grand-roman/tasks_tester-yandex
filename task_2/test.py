@@ -27,7 +27,7 @@ def test_show_contact_output(output):
             phone=test_data['phone'], 
             birthday=test_data['birthday'], 
             address=test_data['address']
-        ) not in output, 'Проверьте, верно ли выведены контакты'
+        ) in output, 'Проверьте, верно ли выведены контакты'
 
 
 def test_name_func_show_contact(user_code):
