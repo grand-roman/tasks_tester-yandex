@@ -31,20 +31,17 @@ def test_show_contact_output(output):
 
 
 def test_name_func_show_contact(user_code):
-    re_param = re.compile(r'def show_contact\(self\):')
-    assert re_param.findall(user_code), 'Проверьте, что вы создали для класса Contact новый метод "show_contact"'
+    assert re.compile(r'def show_contact\(self\):').findall(user_code), 'Проверьте, что вы создали для класса Contact новый метод "show_contact"'
 
 
 def test_body_show_contact_output(user_code):
     for format_param in FORMAT_PARAMS:
-        re_param = re.compile(format_param)
-        assert re_param.findall(user_code), f"Нет вывода параметра {format_param.split('{')[-1].split('}')[0]}"
+        assert re.compile(format_param).findall(user_code), f"Нет вывода параметра {format_param.split('{')[-1].split('}')[0]}"
 
 
 def test_body_show_contact_foramt(user_code):
     temp = f"{FORMAT_PARAMS[0]} — {', '.join(FORMAT_PARAMS[1:])}"
-    re_param = re.compile(rf'print\(f\"{temp}\"\)')
-    assert re_param.findall(user_code), 'Нерпавильный формат для "show_contact"'
+    assert re.compile(rf'print\(f\"{temp}\"\)').findall(user_code), 'Нерпавильный формат для "show_contact"'
     
 
 def test_print_contact_not_exist(user_code):
